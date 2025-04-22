@@ -1,0 +1,33 @@
+<mvc:View controllerName="dialogfragment.controller.mybank_details"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Page id="page" title="Account">
+
+      <headerContent><Button id="headBtn" type="Emphasized" text="Refresh" /></headerContent>
+
+        <content>
+
+        <core:Fragment id="bankDetailsfragment"
+        fragmentName="dialogfragment.view.fragments.BankDetails"
+        type="XML"
+        />
+
+        <Button id="openBankDetails"
+         type="Neutral"
+         text="Find more details.."
+         class="sapUiSmallMarginBegin"
+         press=".onOpenBankDetails"
+         />
+
+        <!-- <Button id="demobtn" type="Emphasized" text="Refresh"/> -->
+
+        <Button id="OpenDemoBtn"
+        type="Neutral"
+        text="click me"
+        class="sapUiSmallMarginBegin"
+        press=".onOpenDemoBtn"
+        />
+        
+        </content>
+    </Page>
+</mvc:View>
