@@ -1,33 +1,70 @@
 <mvc:View controllerName="dialogfragment.controller.mybank_details"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m" xmlns:core="sap.ui.core">
-    <Page id="page" title="Account">
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core">
+  <Page id="page" title="{i18n>appTitle}">
 
-      <headerContent><Button id="headBtn" type="Emphasized" text="Refresh" /></headerContent>
+    <headerContent>
+      <Button id="headBtn" type="Emphasized" text="{i18n>home}" />
+    </headerContent>
 
-        <content>
+    <content>
+         <!-- Bank Details Fragment -->
+         <core:Fragment id="bankDetailsfragment" 
+         fragmentName="dialogfragment.view.fragments.BankDetails"
+          type="XML" />
 
-        <core:Fragment id="bankDetailsfragment"
-        fragmentName="dialogfragment.view.fragments.BankDetails"
-        type="XML"
-        />
+           
+           	<Panel id="pCard" expandable="true" headerText="Cards Details" 
+            width="auto" class="sapUiResponsiveMargin">
+		<content>
 
-        <Button id="openBankDetails"
-         type="Neutral"
-         text="Find more details.."
-         class="sapUiSmallMarginBegin"
-         press=".onOpenBankDetails"
-         />
+    <Text text="Hello world"></Text>
 
-        <!-- <Button id="demobtn" type="Emphasized" text="Refresh"/> -->
+    	<List
+		id="myList"
+		headerText="Inverted Info State"
+		items="" width="50%">
+		<items>
+			<StandardListItem id="card1"
+				title="Master Card (12473632847333)"
+				description="Dabit Card: assigned on 15 Aug 2021"
+				icon="sap-icon://credit-card"
+				iconInset="false"
+				highlight="Information"
+				info="Active"
+				infoState="Information"
+				infoStateInverted="true" />
 
-        <Button id="OpenDemoBtn"
-        type="Neutral"
-        text="click me"
-        class="sapUiSmallMarginBegin"
-        press=".onOpenDemoBtn"
-        />
-        
-        </content>
-    </Page>
+        <StandardListItem id="card2"
+				title="Visa (46575754463332)"
+				description="Credit Card: assigned on 23 Feb 2019"
+				icon="sap-icon://credit-card"
+				iconInset="false"
+				highlight="Error"
+				info="Expired"
+				infoState="Error"
+				infoStateInverted="true" />
+
+        <StandardListItem id="card3"
+				title="Debit Card (584643252254)"
+				description="Dabit Card: assigned on 15 Aug 2021"
+				icon="sap-icon://credit-card"
+				iconInset="false"
+				highlight="Success"
+				info="Active"
+				infoState="Success"
+				infoStateInverted="true" />
+
+		</items>
+	</List>
+
+		</content>
+	</Panel>
+
+      <!-- <Button id="demobtn" type="Emphasized" text="Refresh"/> -->
+
+ 
+    </content>
+  </Page>
 </mvc:View>
