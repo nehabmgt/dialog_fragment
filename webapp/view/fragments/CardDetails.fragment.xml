@@ -1,0 +1,36 @@
+<core:FragmentDefinition  xmlns:core = "sap.ui.core"
+    xmlns = "sap.m">
+
+    <!-- panel list  -->
+    <Panel id="pCard" expandable="true" headerText="Cards Details" width="auto" class="sapUiResponsiveMargin">
+        <content>
+
+            <Text text="Hello world"></Text>
+
+            <List id="myList" headerText="Inverted Info State" items="{oBankDetails>/carddetails}" width="50%">
+                <items>
+                    <StandardListItem id="card1" 
+                    title="{=${oBankDetails>cardcompany}.toUpperCase()} ({oBankDetails>cardnumber})" 
+                    description="{=${oBankDetails>cardtype}.toUpperCase()} {oBankDetails>assignmentdate}" 
+                    icon="sap-icon://credit-card" iconInset="false"
+                    highlight="{=${oBankDetails>state} === 'true' ? 'Success': 'Error'}" 
+                    info="{= ${oBankDetails>state} === 'true' ? 'Active' : 'Expired' }" 
+                    infoState="{=${oBankDetails>state} === 'true' ? 'Success': 'Error'}" 
+                    infoStateInverted="true" />
+
+                    <!-- we comment out all standardlistitem only using one StandardListItem we display all data using aggagarion binding -->
+                    <!-- <StandardListItem id="card2" title="Visa (46575754463332)" description="Credit Card: assigned on 23 Feb 2019" icon="sap-icon://credit-card" iconInset="false" highlight="Error" info="Expired" infoState="Error" infoStateInverted="true" /> -->
+
+                    <!-- <StandardListItem id="card3" title="Debit Card (584643252254)" description="Dabit Card: assigned on 15 Aug 2021" icon="sap-icon://credit-card" iconInset="false" highlight="Success" info="Active" infoState="Success" infoStateInverted="true" /> -->
+
+                </items>
+            </List>
+
+        </content>
+    </Panel>
+
+
+
+
+
+</core:FragmentDefinition>

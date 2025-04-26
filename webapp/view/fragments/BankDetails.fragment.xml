@@ -2,28 +2,51 @@
     xmlns="sap.m">
 
 
-    <Panel id="pAccountDetails" expandable="false" headerText="AccountDetails" width="auto" class="sapUiResponsiveMargin">
+    <Panel id="pAccountDetails" expandable="false"  width="auto" class="sapUiResponsiveMargin">
+    <!-- headerText="Account Details" Removed as per new requirement by neha -->
+
         <content>
             <HBox id="hBox4">
 
-                <Avatar id="aUserProfile" src="" displaySize="XL" showBorder="true" press="onPress"/>
+                <Avatar id="aUserProfile" src="{/profile}" displaySize="XL" showBorder="true" press="onPress"/>
 
-                <VBox id="vBox1" class="sapUiSmallMargin sapUiLargeMarginBegin">
-                    <Title text="{i18n>accDetails}" id="acdetails" level="H1"></Title>
+
+                <!-- element binding   (object name is "{/bankDetails}")-->
+                <!-- we can bind a particular object of a data model with a control and it will create a relative binding for of these chindren control -->
+                <VBox id="vBox1" binding = "{oBankDetails>/accountdetails}" class="sapUiSmallMargin sapUiLargeMarginBegin">
+                 
+                    <!-- <Title text="{i18n>accDetails}" id="acdetails" level="H1"/> -->
 
                     <HBox id="hBox1">
                         <Label text="{i18n>accNum}" id="bankAccNum" class="sapUiSmallMarginEnd"></Label>
-                        <Text text="247865******" id="bankAccVal"></Text>
+
+                        <!-- property binding -->
+                        <!-- //bankDetails/AccounyNum this is call relative binding because we create reference 
+                        object without reference and this is also calles property binding because we bind aproperty of control .
+                         Text is control and text is property of Text(control) -->
+
+                        <!-- <Text text="{/accountdetails/AccounyNum}" id="bankAccVal"></Text> -->
+
+
+                        <!-- we can directly access the data  by perform element binding-->
+                        <Text text="{oBankDetails>accountNum}" id="bankAccVal"></Text>
                     </HBox>
 
                     <HBox id="hBox2">
                         <Label text="{i18n>accHName}" id="lblAccHolderNameID" class="sapUiSmallMarginEnd"></Label>
-                        <Text text="Neha Kumari" id="idAccHolderNameValue"></Text>
+                        <!-- <Text text="{/accountdetails/Name}" id="idAccHolderNameValue"></Text> -->
+
+                        <Text text="{oBankDetails>name}" id="idAccHolderNameValue"></Text>
                     </HBox>
 
                     <HBox id="hBox3">
                         <Label text="{i18n>iFSCode}" id="lblIFSCId" class="sapUiSmallMarginEnd"></Label>
-                        <Text text="000000" id="idIFSCValue"></Text>
+                        <!-- /Ifsc this is called absolute binding because we create direct object without reference -->
+                        <!-- also we can use property binding in both relative binding and absolute binding -->
+                        <!-- <Text text="{/Ifsc}" id="idIFSCValue"></Text> -->
+
+
+                        <Text text="{oBankDetails>ifsc}" id="idIFSCValue"></Text>
                     </HBox>
 
                     <Button id="openBankDetails" type="Neutral" text="{i18n>findMoreBtn}" press=".onOpenBankDetails" />

@@ -2,31 +2,33 @@
 
 <Dialog id="moreBankDetails" title="Confidential Details">
 
- <VBox id="vBox11" class="sapUiSmallMargin">
+ <VBox id="vBox11" binding="{oBankDetails>/accountdetails}" class="sapUiSmallMargin">
 
                 <HBox id="hBox12">
                     <Label text="{i18n>accNum}" id="bankAccNum" class="sapUiSmallMarginEnd"></Label>
-                    <Text text="247865******" id="bankAccVal"></Text>
+                    <Text text="{oBankDetails>accountNum}" id="bankAccVal"></Text>
                 </HBox>
 
                 <HBox id="hBox22">
                     <Label text="{i18n>accHName}" id="lblAccHolderNameID" class="sapUiSmallMarginEnd"></Label>
-                    <Text text="Neha Kumari" id="idAccHolderNameValue"></Text>
+                    <Text text="{oBankDetails>name}" id="idAccHolderNameValue"></Text>
                 </HBox>
 
                 <HBox id="hBox32">
                     <Label text="{i18n>iFSCode}" id="lblIFSCId" class="sapUiSmallMarginEnd"></Label>
-                    <Text text="000000" id="idIFSCValue"></Text>
+                    <Text text="{oBankDetails>ifsc}" id="idIFSCValue"></Text>
                 </HBox>
 
                 <HBox id="hBox44">
                     <Label text="{i18n>custID}" id="lblCusId" class="sapUiSmallMarginEnd"></Label>
-                    <Text text="3654*****" id="idCustValue"></Text>
+                    <Text text="{oBankDetails>customerId}" id="idCustValue"></Text>
                 </HBox>
 
                 <HBox id="hBox55">
                     <Label text="{i18n>address}" id="lblAddressId" class="sapUiSmallMarginEnd"></Label>
-                    <Text text="****/*****/**" id="idAddressValue"></Text>
+                    <Text text="{oBankDetails>address/housenumber},{oBankDetails>address/street},{oBankDetails>address/city}
+                    ,{oBankDetails>address/postalcode},{oBankDetails>address/state},
+                    {oBankDetails>address/country} " id="idAddressValue"></Text>
                 </HBox>
 
             </VBox>

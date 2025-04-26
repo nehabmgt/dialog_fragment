@@ -1,0 +1,41 @@
+{
+    "accountdetails": {
+        "accountNum": "0000000000",
+        "name": "Neha Kumari",
+        "ifsc": "56443",
+        "customerId": "54543",
+        "address": {
+            "city": "Dhanbad",
+            "postalcode": "65544",
+            "housenumber": "05",
+            "street": "Wall Street",
+            "state": "Jharkhand",
+            "country": "India"
+        }
+    },
+    "IfsCode": "000000000",
+
+    "carddetails": [
+        {
+            "cardtype": "debit card",
+            "cardnumber": "00000000",
+            "cardcompany": "master card",
+            "assignmentdate": "assigned on 23 Aug 2020",
+            "state": "true"
+        },
+        {
+            "cardtype": "credit card",
+            "cardnumber": "00000000008",
+            "cardcompany": "master card",
+            "assignmentdate": "assigned on 14 Feb 2018",
+            "state": "false"
+        },
+        {
+            "cardtype": "debit card",
+            "cardnumber": "0000000098",
+            "cardcompany": "master card",
+            "assignmentdate": "assigned on 29 Sep 2022",
+            "state": "true"
+        }
+    ]
+}
