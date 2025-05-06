@@ -37,5 +37,9 @@
             "assignmentdate": "assigned on 29 Sep 2022",
             "state": "true"
         }
-    ]
+    ],
+    "housespending":65000.0,
+    "emi":21500,
+    "entertainment":41500,
+    "empsalary":100000
 }
