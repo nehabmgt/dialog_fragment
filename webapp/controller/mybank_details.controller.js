@@ -1,9 +1,12 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
- ], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "../model/formatter"
+ ], (Controller,formatter) => {
     "use strict";
 
     return Controller.extend("dialogfragment.controller.mybank_details", {
+        // formatter declearation
+        formatter: formatter,
         onInit() {
          
             //setting Global JSON Model
@@ -15,10 +18,14 @@ sap.ui.define([
             // Checking browser language  and setting the global resource model
             this._setGlobalLanguage();
 
+            // get the user profile
+            this.getUserProfile();
 
-            let oProfileModel= new sap.ui.model.json.JSONModel({
-                profile: sap.ui.require.toUrl("dialogfragment/images/profile.png") });
-                this.getView().setModel(oProfileModel);
+
+            // this is one way to apply image 
+            // let oProfileModel= new sap.ui.model.json.JSONModel({
+            //     profile: sap.ui.require.toUrl("dialogfragment/images/profile.png") });
+            //     this.getView().setModel(oProfileModel);
 
 
 
@@ -98,25 +105,25 @@ sap.ui.define([
 
             // Checking browser language  and setting the global resource model
 
-            var appLang;
-            if (navigator.language == "es")
-                appLang = "i18n_es";
+        //     var appLang;
+        //     if (navigator.language == "es")
+        //         appLang = "i18n_es";
 
-            else if (navigator.language == "en")
-                appLang = "i18n";
+        //     else if (navigator.language == "en")
+        //         appLang = "i18n";
 
-            else
-                appLang = "i18n";
-
-
-            var i18nModel = this.getOwnerComponent().getModel(appLang);
-            this.getOwnerComponent().setModel(i18nModel, "i18n")
+        //     else
+        //         appLang = "i18n";
 
 
-        },
+        //     var i18nModel = this.getOwnerComponent().getModel(appLang);
+        //     this.getOwnerComponent().setModel(i18nModel, "i18n")
 
 
-        onOpenBankDetails: function () {
+         },
+
+          // add onOpenBankDetails event in bankdetails.fragment file in open button
+         onOpenBankDetails: function () {
             //create dialog lazily
 
             if (!this.moreBankDetails) {
@@ -130,10 +137,12 @@ sap.ui.define([
                     oDialog.open();
                 });
         },
+        // add onCloseBankDetails event in moredetails.fragment file in close button 
         onCloseBankDetails: function () {
             this.byId("moreBankDetails").close();
         },
 
+        
         onOpenDemoBtn: function () {
             if (!this.demoDialog) {
                 this.demoDialog = this.loadFragment(
@@ -156,7 +165,39 @@ sap.ui.define([
         // _setGlobalModel:function(){
         //     let oModel = this.getOwnerComponent().getModel("oBankDetails");
         //     this.getView().setModel(oModel);
+        //
         // },
+
+        getUserProfile:function(){
+            let oProfileModel= new sap.ui.model.json.JSONModel({
+             profile: sap.ui.require.toUrl("dialogfragment/images/profile.png") });
+             this.getView().setModel(oProfileModel);
+        },
+
+        	/**
+		 * Creates a message for a selection change event on the chart
+         * Without refactoring the code
+		 */
+		// onSelectionChanged: function (oEvent) {
+        //     // debugger;
+		// 	var oSegment = oEvent.getParameter("segment");
+        //     let oValue= oSegment.getValue()
+        //     let empsalary = this.getOwnerComponent().getModel("oBankDetails").getProperty("/empsalary");
+		// 	let percentageVal = (oValue / empsalary)*100;
+		// 	sap.m.MessageToast.show(oSegment.getLabel() + " : " + ((percentageVal >50) ? "Critical" : "Moderate"));
+		// },
+
+        // With refactoring the code
+        onSelectionChanged: function (oEvent) {
+            // debugger;
+			var oSegment = oEvent.getParameter("segment"),
+             oValue= oSegment.getValue(),
+             empsalary = this.getOwnerComponent().getModel("oBankDetails").getProperty("/empsalary"),
+			 percentageVal = (oValue / empsalary)*100;
+			sap.m.MessageToast.show(oSegment.getLabel() + " : " + ((percentageVal >50) ? "Critical" : "Moderate"));
+		},
+
+
 
         _setGlobalLanguage: function(){
             var appLang;
